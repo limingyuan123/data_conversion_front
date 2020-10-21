@@ -2,24 +2,31 @@
     <div>
         <el-form
                 :rules="rules"
-                ref="loginForm"
+                ref="registerForm"
                 v-loading="loading"
-                element-loading-text="Logining in..."
+                element-loading-text="Signing in..."
                 element-loading-spinner="el-icon-loading"
                 element-loading-background="rgba(0, 0, 0, 0.8)"
-                :model="loginForm"
-                class="loginContainer">
-            <h3 class="loginTitle">System Login</h3>
-            <el-form-item prop="username">
-                <el-input size="normal" type="text" v-model="loginForm.username" auto-complete="off"
-                          placeholder="Please enter the user name"></el-input>
+                :model="registerForm"
+                class="registerContainer">
+            <h3 class="registerTitle">System Register</h3>
+            <el-form-item prop="email">
+                <el-input size="normal" type="text" v-model="registerForm.email" auto-complete="off"
+                          placeholder="Please enter the email"></el-input>
             </el-form-item>
-            <el-form-item prop="password">
-                <el-input size="normal" type="password" v-model="loginForm.password" auto-complete="off"
-                          placeholder="Please input a password"></el-input>
+            <el-form-item prop="username">
+                <el-input size="normal" type="text" v-model="registerForm.username" auto-complete="off"
+                          placeholder="Please enter the user name"></el-input>
             </el-form-item>            
-            <el-checkbox size="normal" class="loginRemember" v-model="checked">Keep me logged in</el-checkbox>
-            <el-button size="normal" type="primary" style="width: 100%;" @click="submitLogin">Sign in</el-button>
+            <el-form-item prop="password">
+                <el-input size="normal" type="password" v-model="registerForm.password" auto-complete="off"
+                          placeholder="Please input a password"></el-input>
+            </el-form-item>
+            <el-form-item prop="confirmPassword">
+                <el-input size="normal" type="password" v-model="registerForm.confirmPassword" auto-complete="off"
+                          placeholder="Please enter password again"></el-input>
+            </el-form-item>
+            <el-button size="normal" type="primary" style="width: 100%;" @click="submitRegister">Sign up</el-button>
         </el-form>
     </div>
 </template>
@@ -27,40 +34,43 @@
 <script>
 
     export default {
-        name: "Login",
+        name: "Register",
         data() {
             return {
                 loading: false,
                 vcUrl: '/verifyCode?time='+new Date(),
-                loginForm: {
-                    username: '',
-                    password: '',
-                    code:''
+                registerForm: {
+                    email:"",
+                    username:"",
+                    password:"",
+                    confirmPassword:""
                 },
                 checked: true,
                 rules: {
                     username: [{required: true, message: 'Please enter the user name', trigger: 'blur'}],
-                    password: [{required: true, message: 'Please input a password', trigger: 'blur'}],
-                }
+                    email: [{required: true, message: 'Please enter the email', trigger: 'blur'}],
+                    password: [{required: true, message: 'Please input a password', trigger: 'blur'}],                    
+                    }
             }
         },
         methods: {
             updateVerifyCode() {
                 this.vcUrl = '/verifyCode?time='+new Date();
             },
-            submitLogin() {
-                this.$refs.loginForm.validate((valid) => {
+            submitRegister() {
+                this.$refs.registerForm.validate((valid) => {
                     if (valid) {
                         this.loading = true;
                         var userJson = {};
-                        userJson["name"] = this.loginForm.username;
-                        userJson["password"] = this.loginForm.password;
+                        userJson["name"] = this.registerForm.username;
+                        userJson["email"] = this.registerForm.email;
+                        userJson["password"] = this.registerForm.password;
                         this.axios
-                            .post("/dataConversion/user/login", userJson)
+                            .post("/dataConversion/user/register", userJson)
                             .then(res => {
                                 let data = res.data;
                                 if(data.code == 0){
-                                    this.$router.replace('/operation');
+                                    this.$router.replace('/login');
                                 }else{
                                     alert("error");
                                 }
@@ -76,7 +86,7 @@
 </script>
 
 <style>
-    .loginContainer {
+    .registerContainer {
         border-radius: 15px;
         background-clip: padding-box;
         margin: 100px auto;
@@ -87,13 +97,13 @@
         box-shadow: 0 0 25px #cac6c6;
     }
 
-    .loginTitle {
+    .registerTitle {
         margin: 15px auto 20px auto;
         text-align: center;
         color: #505458;
     }
 
-    .loginRemember {
+    .registerRemember {
         text-align: left;
         margin: 0px 0px 15px 0px;
     }

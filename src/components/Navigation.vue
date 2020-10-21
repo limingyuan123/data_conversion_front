@@ -14,8 +14,28 @@
   position: fixed;
   z-index: 2;
 }
-body{
-    margin: 0px;
+footer[data-v-0ef2f3f6] {
+  background-color: #545c64;
+  height: 60px;
+  width: 100%;
+  bottom: 0;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+.footerTop[data-v-0ef2f3f6] {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.footerBottom[data-v-0ef2f3f6] {
+  text-align: center;
+  color: white;
+  font-size: 0.8em;
+}
+body {
+  margin: 0px;
 }
 </style>
 <template>
@@ -27,7 +47,7 @@ body{
       class="pic"
       style="cursor:pointer;"
     />
-    <!-- head头 -->
+    <!-- header -->
     <div>
       <el-menu
         :default-active="activeIndex2"
@@ -38,7 +58,9 @@ body{
         text-color="#fff"
         active-text-color="#ffd04b"
       >
-        <el-menu-item index="1" style="margin-left:20%">Operation center</el-menu-item>
+        <el-menu-item index="1" style="margin-left:20%"  @click="turnToOperation"
+          >Operation center</el-menu-item
+        >
         <el-submenu index="2">
           <template slot="title">My workspace</template>
           <el-menu-item index="2-1">option1</el-menu-item>
@@ -50,50 +72,26 @@ body{
             >About us</a
           ></el-menu-item
         >
-        
-
         <el-menu-item index="4" style="margin-left: 35%;">
-          <span slot="title">Login</span>
+          <span slot="title" @click="turnToLogin">Login</span>
         </el-menu-item>
         <el-menu-item index="5">
-          <span slot="title">Sign up</span>
+          <span slot="title" @click="turnToSign">Sign up</span>
         </el-menu-item>
-
       </el-menu>
     </div>
-    <!-- 左侧菜单 -->
-    <el-card id="subcard" style="min-width: 60px">
-      <div slot="header" class="clearfix text-center ">
-        <img th:src="@/assets/images/OGMS.png" id="header_image" />
-      </div>
-      <el-menu
-        default-active="1-4-1"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-        :collapse="isCollapse"
-        style="border: aliceblue;"
-      >
-        <el-submenu index="1">
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span slot="title">Mapping</span>
-          </template>
-          <el-menu-item-group>
-            <el-menu-item index="1-1">service</el-menu-item>
-            <el-menu-item index="1-2">service1</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-        <el-menu-item index="2">
-          <i class="el-icon-menu"></i>
-          <span slot="title">Refactor</span>
-        </el-menu-item>
-        <el-menu-item index="3">
-          <i class="el-icon-setting"></i>
-          <span slot="title">Visualization</span>
-        </el-menu-item>
-      </el-menu>
-    </el-card>
+    <router-view></router-view>
+    <!-- end -->
+    <div style="position: fixed;bottom: 0px;width: 100%;">
+      <footer data-v-0ef2f3f6="">
+        <h2 data-v-0ef2f3f6="" class="footerTop" style="margin-bottom: 0px;">
+          <i data-v-0ef2f3f6="" style="font-size:initial">Open Geographic Modeling and Simulation</i>
+        </h2>
+        <p data-v-0ef2f3f6="" class="footerBottom"  style="margin-top: 1px;">
+          Copyright © 2013-2020 OpenGMS. All rights reserved.
+        </p>
+      </footer>
+    </div>
   </div>
 </template>
 
@@ -103,8 +101,8 @@ export default {
   data() {
     return {
       isCollapse: false,
-      activeIndex: "1",
-      activeIndex2: "1"
+       activeIndex: "0",
+      activeIndex2: "0"
     };
   },
   computed: {},
@@ -117,6 +115,15 @@ export default {
     },
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
+    },
+    turnToLogin(){
+      this.$router.replace('/login');
+    },
+    turnToSign(){
+      this.$router.replace('/register');
+    },
+    turnToOperation(){
+      this.$router.replace('/operation');
     }
   }
 };
