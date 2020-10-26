@@ -1,13 +1,4 @@
 <style>
-#logo {
-  position: absolute;
-  width: 129px;
-  height: 40px;
-  z-index: 1;
-  margin-top: 5px;
-  margin-left: 2.5%;
-  cursor: pointer;
-}
 #subcard {
   width: 280px;
   height: 100%;
@@ -17,15 +8,17 @@
 body {
   margin: 0px;
 }
-
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 178px;
-  height: 178px;
-  line-height: 178px;
-  text-align: center;
-  margin-left: 22%;
+.schema {
+  margin-left: 2%;
+  width: 45%;
+  height: auto;
+  float: left;
+}
+.tran {
+  margin-right: 2%;
+  width: 45%;
+  height: auto;
+  float: right;
 }
 </style>
 <template>
@@ -33,96 +26,142 @@ body {
     <!-- 左侧菜单 -->
     <el-card id="subcard" style="min-width: 60px">
       <div slot="header" class="clearfix text-center ">
-        <img th:src="@/assets/images/OGMS.png" id="header_image" />
+        {{templateData.name}}
       </div>
       <el-menu
-        default-active="1-4-1"
+        :default-active="activeLeftIndex"
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose"
         :collapse="isCollapse"
         style="border: aliceblue;"
       >
-        <el-submenu index="1">
+        <el-menu-item index="1" @click="showHome">
+          <i class="el-icon-menu"></i>
+          <span slot="title">Home</span>
+        </el-menu-item>
+        <el-submenu index="2">
           <template slot="title">
-            <i class="el-icon-location"></i>
+            <i class="el-icon-magic-stick"></i>
             <span slot="title">Mapping</span>
           </template>
           <el-menu-item-group>
-            <el-menu-item index="1-1">Service Items</el-menu-item>
-            <el-menu-item index="1-2">Instance</el-menu-item>
+            <el-menu-item index="2-1" @click="showMapping1"
+              >Service Items</el-menu-item
+            >
+            <el-menu-item index="2-2">Instance</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
-        <el-menu-item index="2">
-          <i class="el-icon-menu"></i>
+        <el-menu-item index="3">
+          <i class="el-icon-thumb"></i>
           <span slot="title">Refactor</span>
         </el-menu-item>
-        <el-menu-item index="3">
-          <i class="el-icon-setting"></i>
+        <el-menu-item index="4">
+          <i class="el-icon-view"></i>
           <span slot="title">Visualization</span>
+        </el-menu-item>
+        <el-menu-item index="5">
+          <i class="el-icon-paperclip"></i>
+          <span slot="title">Sharing</span>
         </el-menu-item>
       </el-menu>
     </el-card>
 
-    <!-- 右侧内容 -->
-    <div style="margin-left: 22%;margin-right:3%">
-      <el-row :gutter="12">
-        <el-col :span="8">
-          <el-card shadow="hover">
-            <img src="@/assets/images/designWorkflow.png" />
-            <div style="padding: 14px;">
-              <span>好吃的汉堡</span>
-              <div class="bottom clearfix">
-                <el-button type="text" class="button">操作按钮</el-button>
-              </div>
+    <!-- home右侧内容 -->
+    <div style="margin-left:30%" class="homePage">
+      <el-col :span="4" style="padding:10px;height:350px;width:400px">
+        <el-card shadow="hover">
+          <img
+            style="height:150px;width:350px"
+            src="@/assets/images/designWorkflow.png"
+            @click="dialogVisible = true"
+          />
+          <div style="padding: 14px;width:170px;height:80px">
+            <span>Data Mapping</span>
+            <div class="bottom clearfix">
+              <el-button type="text" class="button">Invoke</el-button>
             </div>
-          </el-card>
-        </el-col>
-        <el-col :span="8">
-          <el-card shadow="hover">
-            <img src="@/assets/images/designWorkflow.png" />
-            <div style="padding: 14px;">
-              <span>好吃的汉堡</span>
-              <div class="bottom clearfix">
-                <el-button type="text" class="button">操作按钮</el-button>
-              </div>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="4" style="padding:10px;height:350px;width:400px">
+        <el-card shadow="hover">
+          <img
+            style="height:150px;width:350px"
+            src="@/assets/images/designWorkflow.png"
+            @click="dialogVisible = true"
+          />
+          <div style="padding: 14px;width:170px;height:80px">
+            <span>Data Refactor</span>
+            <div class="bottom clearfix">
+              <el-button type="text" class="button">Invoke</el-button>
             </div>
-          </el-card>
-        </el-col>
-        <el-col :span="8">
-          <el-card shadow="hover">
-            <img src="@/assets/images/designWorkflow.png" />
-            <div style="padding: 14px;">
-              <span>好吃的汉堡</span>
-              <div class="bottom clearfix">
-                <el-button type="text" class="button">操作按钮</el-button>
-              </div>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="4" style="padding:10px;height:350px;width:400px">
+        <el-card shadow="hover">
+          <img
+            style="height:150px;width:350px"
+            src="@/assets/images/designWorkflow.png"
+            @click="dialogVisible = true"
+          />
+          <div style="padding: 14px;width:170px;height:80px">
+            <span>Data Visualization</span>
+            <div class="bottom clearfix">
+              <el-button type="text" class="button">Invoke</el-button>
             </div>
-          </el-card>
-        </el-col>
-        <el-col :span="8">
-          <el-card shadow="hover">
-            <div>
-              <i
-                class="el-icon-plus avatar-uploader-icon" @click="turnToMapping"
-              ></i>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="4" style="padding:10px;height:350px;width:400px">
+        <el-card shadow="hover">
+          <img
+            style="height:150px;width:350px"
+            src="@/assets/images/designWorkflow.png"
+            @click="dialogVisible = true"
+          />
+          <div style="padding: 14px;width:170px;height:80px">
+            <span>Data Sharing</span>
+            <div class="bottom clearfix">
+              <el-button type="text" class="button">Invoke</el-button>
             </div>
-          </el-card>
-        </el-col>
-      </el-row>
+          </div>
+        </el-card>
+      </el-col>
+    </div>
+
+    <!-- mapping右侧内容 -->
+    <div style="margin-left:25%;display:none" class="mappingPage1">
+      <el-card class="schema">
+        schema:
+        <pre v-if="xml" lang="xml">{{ xml }}</pre>
+      </el-card>
+      <el-card class="tran">
+        transform method:
+      </el-card>
     </div>
   </div>
 </template>
-
 <script>
+import leftMenu from "./template/leftMenu.vue";
+import $ from "jquery";
 export default {
-  name: "Home",
+  name: "operation",
+  components: {
+    leftMenu
+  },
+  created() {
+    this.getData();
+  },
   data() {
     return {
-      isCollapse: false,
       activeIndex: "1",
-      activeIndex2: "1",
-      imageUrl: ""
+      isCollapse: false,
+      activeLeftIndex: "1",
+      xml: "",
+      oid:"",
+      templateData:{},
     };
   },
   computed: {},
@@ -136,9 +175,26 @@ export default {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
     },
-    turnToMapping(){
-      this.$router.replace('/mapping');
+    showHome() {
+      $(".mappingPage1").hide();
+      $(".homePage").show();
+    },
+    showMapping1() {
+      $(".homePage").hide();
+      $(".mappingPage1").show();
+    },
+    getData(){
+        let that = this;
+        this.oid = this.$route.query.oid;
+        this.axios
+        .get("/dataConversion/data/getXmlData/" + this.oid)
+        .then(res => {
+          that.templateData = res.data.data;
+          that.xml = that.templateData.xml;
+        });
     }
+  },
+  mounted() {
   }
 };
 </script>

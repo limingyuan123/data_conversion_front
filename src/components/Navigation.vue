@@ -20,8 +20,8 @@ footer[data-v-0ef2f3f6] {
   width: 100%;
   bottom: 0;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 .footerTop[data-v-0ef2f3f6] {
   text-align: center;
@@ -37,6 +37,13 @@ footer[data-v-0ef2f3f6] {
 body {
   margin: 0px;
 }
+#footer{
+    width: 100%;
+    height:60px;   /* footer的高度一定要是固定值*/ 
+    position:absolute;
+    bottom:0px;
+    left:0px;
+}
 </style>
 <template>
   <div>
@@ -50,7 +57,7 @@ body {
     <!-- header -->
     <div>
       <el-menu
-        :default-active="activeIndex2"
+        :default-active="activeNavIndex"
         class="el-menu-demo"
         mode="horizontal"
         @select="handleSelect"
@@ -58,36 +65,41 @@ body {
         text-color="#fff"
         active-text-color="#ffd04b"
       >
-        <el-menu-item index="1" style="margin-left:20%"  @click="turnToOperation"
-          >Operation center</el-menu-item
+        <el-menu-item index="1" style="margin-left:20%" @click="turnToHome"
+          >Home</el-menu-item
         >
-        <el-submenu index="2">
+        <el-menu-item index="2" @click="turnToTemplate"
+          >Template</el-menu-item
+        >
+        <el-submenu index="3">
           <template slot="title">My workspace</template>
-          <el-menu-item index="2-1">option1</el-menu-item>
-          <el-menu-item index="2-2">option2</el-menu-item>
-          <el-menu-item index="2-3">option3</el-menu-item>
+          <el-menu-item index="3-1">option1</el-menu-item>
+          <el-menu-item index="3-2">option2</el-menu-item>
+          <el-menu-item index="3-3">option3</el-menu-item>
         </el-submenu>
-        <el-menu-item index="3"
+        <el-menu-item index="4"
           ><a href="http://opengmsteam.com/" target="_blank"
             >About us</a
           ></el-menu-item
         >
-        <el-menu-item index="4" style="margin-left: 35%;">
+        <el-menu-item index="5" style="margin-left: 30%;">
           <span slot="title" @click="turnToLogin">Login</span>
         </el-menu-item>
-        <el-menu-item index="5">
+        <el-menu-item index="6">
           <span slot="title" @click="turnToSign">Sign up</span>
         </el-menu-item>
       </el-menu>
     </div>
     <router-view></router-view>
     <!-- end -->
-    <div style="position: fixed;bottom: 0px;width: 100%;">
+    <div id="footer" style="bottom: 0px;width: 100%;">
       <footer data-v-0ef2f3f6="">
         <h2 data-v-0ef2f3f6="" class="footerTop" style="margin-bottom: 0px;">
-          <i data-v-0ef2f3f6="" style="font-size:initial">Open Geographic Modeling and Simulation</i>
+          <i data-v-0ef2f3f6="" style="font-size:initial"
+            >Open Geographic Modeling and Simulation</i
+          >
         </h2>
-        <p data-v-0ef2f3f6="" class="footerBottom"  style="margin-top: 1px;">
+        <p data-v-0ef2f3f6="" class="footerBottom" style="margin-top: 1px;">
           Copyright © 2013-2020 OpenGMS. All rights reserved.
         </p>
       </footer>
@@ -101,8 +113,7 @@ export default {
   data() {
     return {
       isCollapse: false,
-       activeIndex: "0",
-      activeIndex2: "0"
+      activeNavIndex: "1",
     };
   },
   computed: {},
@@ -116,14 +127,17 @@ export default {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
     },
-    turnToLogin(){
-      this.$router.replace('/login');
+    turnToHome() {
+      this.$router.replace("/home");
     },
-    turnToSign(){
-      this.$router.replace('/register');
+    turnToLogin() {
+      this.$router.replace("/login");
     },
-    turnToOperation(){
-      this.$router.replace('/operation');
+    turnToSign() {
+      this.$router.replace("/register");
+    },
+    turnToTemplate() {
+      this.$router.replace("/template");
     }
   }
 };

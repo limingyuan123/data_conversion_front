@@ -1,5 +1,41 @@
+<style>
+    .loginContainer {
+        border-radius: 15px;
+        background-clip: padding-box;
+        margin: 100px auto;
+        width: 350px;
+        padding: 15px 35px 15px 35px;
+        background: #fff;
+        border: 1px solid #eaeaea;
+        box-shadow: 0 0 25px #cac6c6;
+    }
+
+    .loginTitle {
+        margin: 15px auto 20px auto;
+        text-align: center;
+        color: #505458;
+    }
+
+    .loginRemember {
+        text-align: left;
+        margin: 0px 0px 15px 0px;
+    }
+    .el-form-item__content{
+        display: flex;
+        align-items: center;
+    }
+    #container{
+    /*保证footer是相对于container位置绝对定位*/
+    position:relative;  
+    width:100%;
+    min-height:100%; 
+    /*设置padding-bottom值大于等于footer的height值，以保证main的内容能够全部显示出来而不被footer遮盖；*/  
+    padding-bottom: 100px;  
+    box-sizing: border-box;
+}
+</style>
 <template>
-    <div>
+    <div  id="container">
         <el-form
                 :rules="rules"
                 ref="loginForm"
@@ -60,7 +96,7 @@
                             .then(res => {
                                 let data = res.data;
                                 if(data.code == 0){
-                                    this.$router.replace('/operation');
+                                    this.$router.replace('/template');
                                 }else{
                                     alert("error");
                                 }
@@ -74,31 +110,3 @@
         }
     }
 </script>
-
-<style>
-    .loginContainer {
-        border-radius: 15px;
-        background-clip: padding-box;
-        margin: 100px auto;
-        width: 350px;
-        padding: 15px 35px 15px 35px;
-        background: #fff;
-        border: 1px solid #eaeaea;
-        box-shadow: 0 0 25px #cac6c6;
-    }
-
-    .loginTitle {
-        margin: 15px auto 20px auto;
-        text-align: center;
-        color: #505458;
-    }
-
-    .loginRemember {
-        text-align: left;
-        margin: 0px 0px 15px 0px;
-    }
-    .el-form-item__content{
-        display: flex;
-        align-items: center;
-    }
-</style>
