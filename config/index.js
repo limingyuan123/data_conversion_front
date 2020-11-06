@@ -11,6 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      '/dataConversionJS':{
+        target:'http://localhost:8083',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/dataConversionJS': '/'
+        }
+      },
       '/dataConversion':{
         target:'http://localhost:8081',
         changeOrigin:true,

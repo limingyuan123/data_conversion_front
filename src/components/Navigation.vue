@@ -15,7 +15,7 @@
   z-index: 2;
 }
 footer[data-v-0ef2f3f6] {
-  background-color: #545c64;
+  background-color: #135571;
   height: 60px;
   width: 100%;
   bottom: 0;
@@ -40,7 +40,6 @@ body {
 #footer{
     width: 100%;
     height:60px;   /* footer的高度一定要是固定值*/ 
-    position:absolute;
     bottom:0px;
     left:0px;
 }
@@ -61,22 +60,25 @@ body {
         class="el-menu-demo"
         mode="horizontal"
         @select="handleSelect"
-        background-color="#545c64"
+        background-color="#135571"
         text-color="#fff"
         active-text-color="#ffd04b"
       >
-        <el-menu-item index="1" style="margin-left:20%" @click="turnToHome"
+        <el-menu-item index="1" style="margin-left:30%" @click="turnToHome"
           >Home</el-menu-item
         >
-        <el-menu-item index="2" @click="turnToTemplate"
+        <el-menu-item index="2" @click="turnToService"
+          >Service</el-menu-item
+        >
+        <el-menu-item index="3" @click="turnToTemplate"
           >Template</el-menu-item
         >
-        <el-submenu index="3">
+        <!-- <el-submenu index="4">
           <template slot="title">My workspace</template>
-          <el-menu-item index="3-1">option1</el-menu-item>
-          <el-menu-item index="3-2">option2</el-menu-item>
-          <el-menu-item index="3-3">option3</el-menu-item>
-        </el-submenu>
+          <el-menu-item index="4-1">option1</el-menu-item>
+          <el-menu-item index="4-2">option2</el-menu-item>
+          <el-menu-item index="4-3">option3</el-menu-item>
+        </el-submenu> -->
         <el-menu-item index="4"
           ><a href="http://opengmsteam.com/" target="_blank"
             >About us</a
@@ -92,8 +94,8 @@ body {
     </div>
     <router-view></router-view>
     <!-- end -->
-    <div id="footer" style="bottom: 0px;width: 100%;">
-      <footer data-v-0ef2f3f6="">
+    <div id="footer" class="fixed-bottom">
+      <footer data-v-0ef2f3f6="" style="backgroud:#135571;">
         <h2 data-v-0ef2f3f6="" class="footerTop" style="margin-bottom: 0px;">
           <i data-v-0ef2f3f6="" style="font-size:initial"
             >Open Geographic Modeling and Simulation</i
@@ -113,7 +115,7 @@ export default {
   data() {
     return {
       isCollapse: false,
-      activeNavIndex: "1",
+      activeNavIndex: "",
     };
   },
   computed: {},
@@ -138,6 +140,9 @@ export default {
     },
     turnToTemplate() {
       this.$router.replace("/template");
+    },
+    turnToService(){
+      this.$router.replace("/service");
     }
   }
 };

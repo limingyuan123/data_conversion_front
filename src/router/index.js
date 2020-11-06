@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 Vue.use(Router)
 
@@ -13,6 +15,7 @@ const routes = [{
     { path: 'mapping', name: 'mapping', component: resolve => (require(["@/components/mapping"], resolve)) },
     { path: 'home', name: 'home', component: resolve => (require(["@/components/home"], resolve)) },
     { path: 'operation', name: 'operation', component: resolve => (require(["@/components/operation"], resolve)) },
+    { path: 'service', name: 'service', component: resolve => (require(["@/components/service"], resolve)) },
   ]
 }]
 

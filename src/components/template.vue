@@ -45,7 +45,7 @@ body {
     <div style="margin-left: 3%;margin-right:3%;margin-top:10px">
       <div v-for="(schema, index) in schemaData" :key="index" class="schema">
         <!-- <el-row :gutter="6"> -->
-        <el-col :span="4" style="padding:10px;height:350px">
+        <el-col :span="4" style="padding:10px;height:350px;width:230px">
           <el-card
             shadow="hover"
             @click.native="turnToOperation"
@@ -53,7 +53,7 @@ body {
           >
             <img
               style="height:150px;width:170px"
-              src="@/assets/images/designWorkflow.png"
+              src="@/assets/logo.png"
             />
             <div style="padding: 14px;width:170px;height:80px">
               <span>{{ schema.name }}</span>

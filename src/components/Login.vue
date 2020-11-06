@@ -92,7 +92,7 @@
                         userJson["name"] = this.loginForm.username;
                         userJson["password"] = this.loginForm.password;
                         this.axios
-                            .post("/dataConversion/user/login", userJson)
+                            .post("/dataConversionJS/login", userJson)
                             .then(res => {
                                 let data = res.data;
                                 if(data.code == 0){
