@@ -64,16 +64,19 @@ body {
         text-color="#fff"
         active-text-color="#ffd04b"
       >
-        <el-menu-item index="1" style="margin-left:30%" @click="turnToHome"
+        <el-menu-item index="1" style="margin-left:20%" @click="turnToHome"
           >Home</el-menu-item
         >
-        <el-menu-item index="2" @click="turnToService"
+        <el-menu-item index="2" @click="turnToProject"
+          >Project</el-menu-item
+        >
+        <el-menu-item index="3" @click="turnToService"
           >Service</el-menu-item
         >
-        <el-menu-item index="3" @click="turnToTemplate"
-          >Template</el-menu-item
+        <el-menu-item index="4" @click="turnToTemplate"
+          >Code Template</el-menu-item
         >
-        <el-menu-item index="4" @click="turnToHelp"
+        <el-menu-item index="5" @click="turnToHelp"
           >Help</el-menu-item
         >
         <!-- <el-submenu index="4">
@@ -82,15 +85,15 @@ body {
           <el-menu-item index="4-2">option2</el-menu-item>
           <el-menu-item index="4-3">option3</el-menu-item>
         </el-submenu> -->
-        <el-menu-item index="5"
+        <el-menu-item index="6"
           ><a href="http://opengmsteam.com/" target="_blank"
             >About us</a
           ></el-menu-item
         >
-        <el-menu-item index="6" style="margin-left: 25%;">
+        <el-menu-item index="7" style="margin-left: 25%;">
           <span slot="title" @click="turnToLogin">Login</span>
         </el-menu-item>
-        <el-menu-item index="7">
+        <el-menu-item index="8">
           <span slot="title" @click="turnToSign">Sign up</span>
         </el-menu-item>
       </el-menu>
@@ -146,6 +149,9 @@ export default {
     },
     turnToService(){
       this.$router.replace("/service");
+    },
+    turnToProject(){
+      this.$router.replace("/project");
     },
     turnToHelp(){
       alert("hello im help sir");

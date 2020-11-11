@@ -1,55 +1,5 @@
 <style>
-#subcard {
-  width: 280px;
-  height: 90%;
-  float: left;
-  position: absolute;
-  z-index: auto;
-}
-body {
-  margin: 0px;
-}
-.schema {
-  margin-left: 2%;
-  width: 45%;
-  height: auto;
-  float: left;
-}
-.tran {
-  margin-right: 2%;
-  width: 45%;
-  height: auto;
-  float: right;
-}
-.time {
-  font-size: 13px;
-  color: #999;
-}
-
-.bottom {
-  margin-top: 13px;
-  line-height: 12px;
-}
-
-.button {
-  padding: 0;
-  float: right;
-}
-
-.image {
-  width: 100%;
-  display: block;
-}
-
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
-
-.clearfix:after {
-  clear: both;
-}
+@import "../assets/css/service.css";
 </style>
 <template>
   <div>

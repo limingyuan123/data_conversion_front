@@ -16,6 +16,7 @@ const routes = [{
     { path: 'home', name: 'home', component: resolve => (require(["@/components/home"], resolve)) },
     { path: 'operation', name: 'operation', component: resolve => (require(["@/components/operation"], resolve)) },
     { path: 'service', name: 'service', component: resolve => (require(["@/components/service"], resolve)) },
+    { path: 'project', name: 'project', component: resolve => (require(["@/components/project"], resolve)) },
   ]
 }]
 

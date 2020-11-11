@@ -1,48 +1,20 @@
 <style>
-#logo {
-  position: absolute;
-  width: 129px;
-  height: 40px;
-  z-index: 1;
-  margin-top: 5px;
-  margin-left: 2.5%;
-  cursor: pointer;
-}
-#subcard {
-  width: 280px;
-  height: 100%;
-  position: fixed;
-  z-index: auto;
-}
-body {
-  margin: 0px;
-}
-
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 178px;
-  height: 178px;
-  line-height: 178px;
-  text-align: center;
-  margin-left: 22%;
-}
-#container {
-  /*保证footer是相对于container位置绝对定位*/
-  position: relative;
-  width: 100%;
-  min-height: 100%;
-  /*设置padding-bottom值大于等于footer的height值，以保证main的内容能够全部显示出来而不被footer遮盖；*/
-  padding-bottom: 100px;
-  box-sizing: border-box;
-}
-/* .el-col .el-col-4{
-  padding: 10px;
-} */
+@import '../assets/css/template.css';
 </style>
 <template>
   <div id="container">
-    <div style="margin-left: 3%;margin-right:3%;margin-top:10px">
+    <div class="leftMenu" style="position:absolute;margin-left:5%;margin-top:5%">
+      <li id="m2">
+        <a href="#" class="">Welcome</a>
+      </li>
+      <li id="m3">
+        <a href="#" class="">Describe</a>
+      </li>
+      <li id="m4">
+        <a href="#" class="">Mapping</a>
+      </li>
+    </div>
+    <div style="margin-left: 25%;margin-right:3%;margin-top:10px">
       <div v-for="(schema, index) in schemaData" :key="index" class="schema">
         <!-- <el-row :gutter="6"> -->
         <el-col :span="4" style="padding:10px;height:350px;width:230px">
@@ -83,7 +55,7 @@ body {
       </el-row> -->
     </div>
     <el-pagination
-      style="text-align: center;margin-top:20px;z-index:1"
+      style="text-align: center;margin-left:30%;display:inline-block;"
       @current-change="handleCurrentChange"
       :page-size="pageData.size"
       :current-page="pageData.page"
