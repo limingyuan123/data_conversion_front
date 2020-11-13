@@ -24,7 +24,8 @@ body {
 <template>
   <div>
     <!-- 左侧菜单 -->
-    <el-card id="subcard" style="min-width: 60px">
+    <leftMenu></leftMenu>
+    <!-- <el-card id="subcard" style="min-width: 60px">
       <div slot="header" class="clearfix text-center ">
         {{templateData.name}}
       </div>
@@ -65,7 +66,7 @@ body {
           <span slot="title">Sharing</span>
         </el-menu-item>
       </el-menu>
-    </el-card>
+    </el-card> -->
 
     <!-- home右侧内容 -->
     <div style="margin-left:30%" class="homePage">

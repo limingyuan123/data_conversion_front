@@ -8,6 +8,7 @@ import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import $ from 'jquery'
+import '../src/assets/css/service.css'
 
 Vue.use(VueAxios,axios)
 Vue.use(ElementUI)
