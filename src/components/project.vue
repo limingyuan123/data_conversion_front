@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 .image {
   width: 100%;
   display: block;
@@ -18,14 +18,14 @@
             class="image"
           />
           <div style="padding: 14px;">
-            <p style="text-align:center">Create Service</p>
+            <p style="text-align:center">Data Service</p>
             <span style="display:inline-block;text-align:center">
               Are you listening to your customers? As they say: You cannot
               improve what you cannot measure
             </span>
             <div class="bottom clearfix">
-              <el-button type="text" class="button" style="float:left">Manage</el-button>
-              <el-button  type="primary" class="createMap" style="float:right"  plain >Create New</el-button>
+              <el-button type="primary" class="detail" style="float:left" plain>Detail</el-button>
+              <el-button  type="primary" @click="turnToService" class="createService" style="float:right"  plain >Invoke</el-button>
             </div>
           </div>
         </el-card>
@@ -45,8 +45,8 @@
               improve what you cannot measure
             </span>
             <div class="bottom clearfix">
-              <el-button type="text" class="button" style="float:left">Manage</el-button>
-              <el-button type="primary" class="createMap" style="float:right" plain>Create New</el-button>
+              <el-button type="primary" class="detail" style="float:left" plain>Detail</el-button>
+              <el-button type="primary" @click="turnToCoding" class="visualCode" style="float:right" plain>Invoke</el-button>
             </div>
           </div>
         </el-card>
@@ -66,8 +66,8 @@
               improve what you cannot measure
             </span>
             <div class="bottom clearfix">
-              <el-button type="text" class="button" style="float:left">Manage</el-button>
-              <el-button type="primary" class="createMap" style="float:right" plain>Create New</el-button>
+              <el-button type="primary" class="detail" style="float:left" plain>Detail</el-button>
+              <el-button type="primary" class="visualCode" style="float:right" plain>Invoke</el-button>
             </div>
           </div>
         </el-card>
@@ -81,7 +81,14 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+      turnToService(){
+          this.$router.replace('/operationService')
+      },
+      turnToCoding(){
+          this.$router.replace('/operationCoding');
+      },
+  },
   mounted() {}
 };
 </script>

@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 #subcard {
   width: 280px;
   height: 100%;

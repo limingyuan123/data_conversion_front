@@ -1,19 +1,35 @@
-<style>
-@import '../assets/css/template.css';
+<style scoped>
+@import "../assets/css/template.css";
+@import "../assets/css/home.css";
 </style>
 <template>
   <div id="container">
-    <div class="leftMenu" style="position:absolute;margin-left:5%;margin-top:5%">
+    <el-card>
+      <el-input
+        v-model="input"
+        placeholder="Enter Template Name"
+        style="position:absolute;width:40%"
+      ></el-input>
+      <el-button type="primary" style="margin-left:42%">search</el-button>
+      <el-button type="primary" style="float:right">Create New One</el-button>
+    </el-card>
+    <el-card
+      class="leftMenu"
+      style="position:absolute;margin-left:5%;margin-top:5%"
+    >
+      <li id="m2" style="background: #eaeaea;">
+        <a class="" style="font-weight:800">Template Category</a>
+      </li>
       <li id="m2">
-        <a href="#" class="">Welcome</a>
-      </li>
-      <li id="m3">
-        <a href="#" class="">Describe</a>
-      </li>
-      <li id="m4">
         <a href="#" class="">Mapping</a>
       </li>
-    </div>
+      <li id="m3">
+        <a href="#" class="">Refactor</a>
+      </li>
+      <li id="m4">
+        <a href="#" class="">Visual</a>
+      </li>
+    </el-card>
     <div style="margin-left: 25%;margin-right:3%;margin-top:10px">
       <div v-for="(schema, index) in schemaData" :key="index" class="schema">
         <!-- <el-row :gutter="6"> -->
@@ -23,10 +39,7 @@
             @click.native="turnToOperation"
             class="template"
           >
-            <img
-              style="height:150px;width:170px"
-              src="@/assets/logo.png"
-            />
+            <img style="height:150px;width:170px" src="@/assets/logo.png" />
             <div style="padding: 14px;width:170px;height:80px">
               <span>{{ schema.name }}</span>
               <div class="bottom clearfix">
@@ -101,7 +114,8 @@ export default {
         totalPages: 0,
         size: 0
       },
-      dialogVisible: false
+      dialogVisible: false,
+      input: ""
     };
   },
   computed: {},
@@ -145,11 +159,11 @@ export default {
           let oid = this.schemaData[i].oid;
           // window.open("/dataConversion/data/operation/" + oid);
           this.$router.push({
-            name:"operation",
-            query:{
-              oid:oid,
+            name: "operation",
+            query: {
+              oid: oid
             }
-          })
+          });
         }
       }
     }

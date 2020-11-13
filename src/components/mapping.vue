@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 .schema {
   margin-left: 2%;
   width: 45%;

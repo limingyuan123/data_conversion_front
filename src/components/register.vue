@@ -1,4 +1,4 @@
-<style>
+<style scoped>
     .registerContainer {
         border-radius: 15px;
         background-clip: padding-box;

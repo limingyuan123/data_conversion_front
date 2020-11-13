@@ -17,7 +17,10 @@ const routes = [{
     { path: 'operation', name: 'operation', component: resolve => (require(["@/components/operation"], resolve)) },
     { path: 'service', name: 'service', component: resolve => (require(["@/components/service"], resolve)) },
     { path: 'project', name: 'project', component: resolve => (require(["@/components/project"], resolve)) },
-  ]
+    { path: 'operationService', name: 'operationService', component: resolve => (require(["@/components/operationService"], resolve)) },
+    { path: 'operationCoding', name: 'operationCoding', component: resolve => (require(["@/components/operationCoding"], resolve)) },
+  ],
+  redirect: '/home'
 }]
 
 
